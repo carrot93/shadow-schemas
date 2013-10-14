@@ -1,5 +1,5 @@
 Package.describe({
-  summary: "Very simple validation pattern aimed at maximum flexibility."
+  summary: "A very simple validation pattern aimed at maximum flexibility."
 });
 
 Package.on_use(function (api, where) {
