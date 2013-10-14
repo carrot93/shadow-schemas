@@ -36,10 +36,10 @@ or
 ```js
 invalidOutput = isAwesome(invalidValue)
 
-awesomeOutput.valid
+invalidOutput.valid
 => false
 
-awesomeOutput.message
+invalidOutput.message
 => 'not awesome enough'
 ```
 
