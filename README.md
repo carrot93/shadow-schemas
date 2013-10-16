@@ -56,7 +56,7 @@ invalidOutput.message
 Travis-ci is currently not able to test Meteor but here is the anyway (it returns passing falsely) [![Build Status](https://travis-ci.org/Meteor-Reaction/meteor-validity.png)](https://travis-ci.org/Meteor-Reaction/meteor-validity) 
 
 
-This package is fully speced out in tinytest. 
+This package is fully specded out in tinytest. 
 If you want to a feature added just post an issue or a pull request.
 
 
