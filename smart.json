@@ -1,8 +1,8 @@
 {
   "name": "validity",
   "description": "A very simple validation pattern aimed at maximum flexibility.",
-  "homepage": "https://github.com/CMToups/meteor-validity",
+  "homepage": "https://github.com/Meteor-Reaction/meteor-validity",
   "author": "Conner Meissner Toups",
-  "version": "0.0.1",
-  "git": "https://github.com/CMToups/meteor-validity.git"
+  "version": "0.0.2",
+  "git": "https://github.com/Meteor-Reaction/meteor-validity.git"
 }
