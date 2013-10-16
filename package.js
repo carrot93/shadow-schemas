@@ -9,3 +9,12 @@ Package.on_use(function (api, where) {
   }
   api.add_files('validity.coffee', ['client', 'server']);
 });
+
+Package.on_test(function(api) {
+
+  api.use('validity');
+  api.use(['tinytest'], ['client', 'server']);
+
+  api.add_files('validity.tests.js', ['client', 'server']);
+
+});
