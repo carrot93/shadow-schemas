@@ -58,8 +58,6 @@ invalidOutput.message
 This package is fully specced out in tinytest. 
 If you want a feature added just post an issue or a pull request.
 
-
-At the time of this writing all tests were passing. 
 You can test the pacakage by running `mrt test-packages <path to package>`
 
 
