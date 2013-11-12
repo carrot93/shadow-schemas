@@ -52,8 +52,7 @@ invalidOutput.message
 => 'not awesome enough'
 ```
 
-## Test n Spec
-Travis-ci is currently not able to test Meteor but here is the anyway (it returns passing falsely) [![Build Status](https://travis-ci.org/Meteor-Reaction/meteor-validity.png)](https://travis-ci.org/Meteor-Reaction/meteor-validity) 
+## Test n Spec  [![Build Status](https://travis-ci.org/Meteor-Reaction/meteor-validity.png)](https://travis-ci.org/Meteor-Reaction/meteor-validity) 
 
 
 This package is fully specced out in tinytest. 
