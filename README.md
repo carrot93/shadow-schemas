@@ -1,59 +1,70 @@
 Validity
 ===============
-Validity is a very simple validation pattern aimed at maximum flexibility.
+Validity is functional schema.
 
 ## Summary 
-This package gives you a Validity object that lets you call `Validity.allow()` and  `Validity.deny(\*message*\)`.
-Everyone has different uses cases for validation, and more often then not you end up having to hack your way around a gridlocked codebase.
-This package just lets you pass some data into a function and test if it meets your criteria. 
-Its simple and resuable anywhere on the server or client.
 
 
 ## Usage
 
 ```js
+Example = new Mongo.Collection('example');
 
-isAwesome = function (value) {
-
-  // define your validation of awesome
-
-  if (value == awesome)
-    return Validity.allow()
-  else
-    return Validity.deny('not awesome enough')
-}
+Example.validations({
+  typed: function (value) {
+    if (_.isString(value)) {
+      this.valid('is a string')
+    } else {
+      this.invalid('must be a string')
+    }
+  },
+  explicit: function (value) {
+    if (value === 'Jane') {
+      this.valid('is Jane')
+    } else {
+      this.invalid('must be Jane')
+    }
+  },
+  generic: functional (value) {
+    try {
+      //can be an array or {lon: Number, lat: Number}
+      var latLng = L.latLng(value);
+      if (_.isNumber(latLng.lat) && _.isNumber(latLng.lng)) {
+        this.invalid('is Geo Location')
+      } else {
+        this.invalid('must have both latitude and longitude')  
+      }
+    } catch (e) {
+      this.invalid('must be a valid GeoLocaton')
+    }
+  },
+  'nested.properties': function (value) {
+    if (value) { //you may wish to type check booleans to save db space
+      this.valid('is true')
+    } else {
+      this.invalid('must be true')
+    }
+  }
+})
 ```
 
-## Output
-
+## 
 ```js
-awesomeOutput = isAwesome(awesomeValue)
+exampleId = Example.insert({
+  typed: 'a string',
+  explicit: 'Joe'
+})
+example = Example.findOne(exampleId)
 
-awesomeOutput.valid
-=> true
+example.$validate('typed');
+//{valid: true, message: "is a string"}
 
-awesomeOutput.message
-=> undefined
+example.$validate('explicit');
+//{valid: false, message: "must be Jane"}
+
+example.$validate('generic');
+//{valid: true, message: ""}
+
+example.$validate('nested.properties');
+//{valid: true, message: "is true"}
 ```
-or
-
-```js
-invalidOutput = isAwesome(invalidValue)
-
-invalidOutput.valid
-=> false
-
-invalidOutput.message
-=> 'not awesome enough'
-```
-
-## Test n Spec  [![Build Status](https://travis-ci.org/Meteor-Reaction/meteor-validity.png)](https://travis-ci.org/Meteor-Reaction/meteor-validity) 
-
-
-This package is fully specced out in tinytest. 
-If you want a feature added just post an issue or a pull request.
-
-You can test the pacakage by running `mrt test-packages <path to package>`
-
-
-
