@@ -2,6 +2,9 @@ Validity
 ===============
 Validity is a very simple validation pattern aimed at maximum flexibility.
 
+###### Warning: This readme is out of date for the master branch! Massive changes are underway.
+
+
 ## Summary 
 This package gives you a Validity object that lets you call `Validity.allow()` and  `Validity.deny(\*message*\)`.
 Everyone has different uses cases for validation, and more often then not you end up having to hack your way around a gridlocked codebase.
