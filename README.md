@@ -69,7 +69,12 @@ Example.validations({
 ```js
 exampleId = Example.insert({
   typed: 'a string',
-  explicit: 'Joe'
+  explicit: 'Joe',
+  generic: {lat: 60, lng: 60},
+  descriptive: 'example@icloud.com'
+  nested = {
+    properties: true
+  }
 })
 example = Example.findOne(exampleId)
 
@@ -80,7 +85,10 @@ example.$validate('explicit');
 //{valid: false, message: "must be Jane"}
 
 example.$validate('generic');
-//{valid: true, message: ""}
+//{valid: true, message: "is Geo Location"}
+
+example.$validate('descriptive');
+//{valid: true, message: "is an Apple email"}
 
 example.$validate('nested.properties');
 //{valid: true, message: "is true"}
