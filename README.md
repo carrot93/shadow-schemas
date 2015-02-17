@@ -16,16 +16,16 @@ Example = new Mongo.Collection('example');
 Example.validations({
   typed: function (value) {
     if (_.isString(value)) {
-      this.valid('is a string')
+      return this.valid('is a string')
     } else {
-      this.invalid('must be a string')
+      return this.invalid('must be a string')
     }
   },
   explicit: function (value) {
     if (value === 'Jane') {
-      this.valid('is Jane')
+      return this.valid('is Jane')
     } else {
-      this.invalid('must be Jane')
+      return this.invalid('must be Jane')
     }
   },
   generic: function (value) {
@@ -33,19 +33,33 @@ Example.validations({
       //can be an array or {lon: Number, lat: Number}
       var latLng = L.latLng(value);
       if (_.isNumber(latLng.lat) && _.isNumber(latLng.lng)) {
-        this.invalid('is Geo Location')
+        return this.invalid('is Geo Location')
       } else {
-        this.invalid('must have both latitude and longitude')  
+        return this.invalid('must have both latitude and longitude')  
       }
     } catch (e) {
-      this.invalid('must be a valid GeoLocaton')
+      return this.invalid('must be a valid GeoLocaton')
+    }
+  },
+  descriptive: function (value) {
+    var email = someEmailValidator(value) //readme shortcut -_^
+    if (email) {
+      if (email == 'gmail') {
+        return this.valid('is a Gmail email')
+      } else if (email == 'apple') {
+        return this.valid('is an Apple email')
+      } else { //and so on
+       return this.valid('is email')
+      }
+    } else {
+      return this.invalid('must be an email') //you would want to be more descriptive...
     }
   },
   'nested.properties': function (value) {
     if (value) { //you may wish to type check booleans to save db space
-      this.valid('is true')
+      return this.valid('is true')
     } else {
-      this.invalid('must be true')
+      return this.invalid('must be true')
     }
   }
 })
