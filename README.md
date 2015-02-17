@@ -28,7 +28,7 @@ Example.validations({
       this.invalid('must be Jane')
     }
   },
-  generic: functional (value) {
+  generic: function (value) {
     try {
       //can be an array or {lon: Number, lat: Number}
       var latLng = L.latLng(value);
