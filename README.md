@@ -1,6 +1,6 @@
-Validity
+Shadow Schema
 ===============
-Validity is functional schema.
+Shadow Schema is functional schema.
 
 ###### Warning: This readme is out of date for the master branch! Massive changes are underway.
 
