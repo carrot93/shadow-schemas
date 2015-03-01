@@ -30,7 +30,7 @@ Example.validations({
   },
   generic: function (value) {
     try {
-      //can be an array or {lon: Number, lat: Number}
+      //can be an array or {lat: Number, lng: Number}
       var latLng = L.latLng(value);
       if (_.isNumber(latLng.lat) && _.isNumber(latLng.lng)) {
         return this.invalid('is Geo Location')
