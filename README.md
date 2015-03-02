@@ -1,19 +1,14 @@
 Shadow Schema
 ===============
+
 Shadow Schema is functional schema.
-
-###### Warning: This readme is out of date for the master branch! Massive changes are underway.
-
-
-## Summary 
-
 
 ## Usage
 
 ```js
 Example = new Mongo.Collection('example');
 
-Example.validations({
+Example.schema({
   typed: function (value) {
     if (_.isString(value)) {
       return this.valid('is a string')
@@ -65,9 +60,8 @@ Example.validations({
 })
 ```
 
-## 
 ```js
-exampleId = Example.insert({
+var exampleId = Example.insert({
   typed: 'a string',
   explicit: 'Joe',
   generic: {lat: 60, lng: 60},
@@ -75,8 +69,8 @@ exampleId = Example.insert({
   nested = {
     properties: true
   }
-})
-example = Example.findOne(exampleId)
+});
+var example = Example.findOne(exampleId)
 
 example.$validate('typed');
 //{valid: true, message: "is a string"}
@@ -92,4 +86,7 @@ example.$validate('descriptive');
 
 example.$validate('nested.properties');
 //{valid: true, message: "is true"}
+
+
+example.$validate(); //returns an object with all the values
 ```
