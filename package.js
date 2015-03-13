@@ -5,6 +5,11 @@ Package.describe({
 });
 
 Package.on_use(function (api, where) {
-  api.use(['mreaction:shadow-collections@0.1.0', 'underscore', 'mreaction:shadow-util@0.1.0']);
+  api.use([
+    'matb33:collection-hooks@0.7.5',
+    'mreaction:shadow-collections@0.1.0', 
+    'underscore', 
+    'mreaction:shadow-util@0.1.0'
+  ]);
   api.add_files('lib/schema.js');
 });
