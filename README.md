@@ -1,9 +1,9 @@
 Shadow Schema
 ===============
 
-Shadow Schema is functional schema.
+Shadow Schema is functional schema that use [Shadow Collections](https://github.com/Meteor-Reaction/shadow-collections).
 
-## Usage
+## Example
 
 ```js
 Example = new Mongo.Collection('example');
@@ -55,6 +55,20 @@ Example.schema({
       return this.valid('is true')
     } else {
       return this.invalid('must be true')
+    }
+  },
+  //other features, pass an object for more options
+  'with.default': { 
+    validation: function () { //normal validations function
+      return this.valid('anything goes')
+    },
+    default: 42 //this is not used in the schema, its just on option for other packages
+  },
+  'auto.values': {
+    auto: function () { //run AFTER validations on insert/updates
+      if (Meteor.isServer) { //will run on client and then server if called from client
+        return new Date(); //good for createdAt values
+      }
     }
   }
 })
