@@ -1,7 +1,8 @@
 Package.describe({
   name: 'mreaction:shadow-schemas',
   summary: "A functional schema aimed at maximum flexibility",
-  version: '0.1.0'
+  version: '0.1.1',
+  git: "https://github.com/Meteor-Reaction/shadow-schemas.git"
 });
 
 Package.on_use(function (api, where) {
